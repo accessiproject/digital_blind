@@ -4,5 +4,5 @@
 
 {% block body %}
     <h1>{{ company.name }}</h1>
-    <p>{{ company.summary }}</p>
+    <p>{{ company.summary }} <a href="{{ path('home_presentation') }}">Lire la présentation complète de l'entreprise</a></p>
 {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace administrateur{% endblock %}
+
+{% block body %}
+    <h1>Informations générales de l'entreprise</h1>
+    <h2>Carte d'identité :</h2>
+        <ul>
+            <li>Raison sociale de l'entreprise : {{ company.name }}.</li>
+            <li>Logo de l'entreprise : <img src="{{ company.logo }}" al!t="Logo de l'entreprise"></li>
+            <li>Résumé :</li>
+            {{ company.summary }}
+            <li>Présentation de l'entreprise :</li>
+            {{ company.presentation }}
+        </ul>
+    <h2>Coordonnées :</h2>
+        <ul>
+            <li>Adresse postale : {{ company.address }} {{ company.postalcode }} {{ company.city }}.</li>
+            <li>Téléphone fixe : {{ company.phone }}.</li>
+            <li>Mobile : {{ company.mobile }}.</li>
+        </ul>
+        <hr>
+        <p>
+            <a href="#">Modifier</a>
+        </p>
+{% endblock %}
