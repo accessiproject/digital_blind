@@ -8,6 +8,13 @@
         {% endblock %}
     </head>
     <body>
+        <nav aria-label="Menu principal">
+            <ul>
+                <li>
+                    <a href="{{ path('home_index') }}">Accueil</a>
+                </li>
+            </ul>
+        </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
