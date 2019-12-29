@@ -22,6 +22,18 @@ class HomeController extends AbstractController
     }
 
     /**
+    * @Route("/presentation-de-l-entreprise", name="home_presentation")
+     */
+    public function presentation()
+    {
+        $company = $this->getDoctrine()->getRepository(Company::class)->find(1);
+        return $this->render('home/presentation.html.twig', [
+            'controller_name' => 'HomeController',
+            'company' => $company,
+        ]);
+    }
+
+    /**
     * @Route("/admin", name="home_admin")
      */
     public function admin()
