@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Company;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,9 @@ class CompanyType extends AbstractType
         $builder
             ->add('name')
             ->add('logo')
-            ->add('summary')
+            ->add('summary', CKEditorType::class, array (  
+                'label' => 'Résumé :',  
+                ))
             ->add('presentation')
             ->add('address')
             ->add('postalcode')
