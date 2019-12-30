@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace administrateur{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        <h1>Modification du profil – Edition</h1>
+        <fieldset>
+            <legend>
+                <h2>Informations générales :</h2>
+            </legend>
+            <div class="form-group">
+                {{ form_label(form.name, 'Raison sociale de l\'entreprise (obligatoire) :') }}
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.summary, 'Résumé de l\'entreprise (obligatoire) :') }}
+                {{ form_widget(form.summary) }}                
+            </div>
+        </fieldset>
+    {{ form_end(form) }}
+{% endblock %}
