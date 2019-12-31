@@ -15,10 +15,8 @@ class CompanyType extends AbstractType
         $builder
             ->add('name')
             ->add('logo')
-            ->add('summary', CKEditorType::class, array (  
-                'label' => 'Résumé :',  
-                ))
-            ->add('presentation')
+            ->add('summary', CKEditorType::class)
+            ->add('presentation', CKEditorType::class)
             ->add('address')
             ->add('postalcode')
             ->add('city')

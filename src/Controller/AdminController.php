@@ -31,7 +31,6 @@ class AdminController extends AbstractController
         $company = $manager->getRepository(Company::class)->find(1);
         $form = $this->createForm(CompanyType::class, $company);
         $form->handleRequest($request);
-        var_dump($_POST);
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($company);
             $manager->flush();

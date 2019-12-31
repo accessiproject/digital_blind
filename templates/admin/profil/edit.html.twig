@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Espace administrateur{% endblock %}
+{% block title %}Modification du profil – Edition{% endblock %}
 
 {% block body %}
     {{ form_start(form) }}
@@ -14,9 +14,32 @@
                 {{ form_widget(form.name) }}
             </div>
             <div class="form-group">
-                {{ form_label(form.summary) }}
+                {{ form_label(form.summary, 'Résumé de l\'entreprise (obligatoire) :') }}
                 {{ form_widget(form.summary) }}                
             </div>
+            <div class="form-group">
+                {{ form_label(form.presentation, 'Présentation de l\'entreprise (obligatoire) :') }}
+                {{ form_widget(form.presentation) }}                
+            </div>
         </fieldset>
+        <fieldset>
+            <legend>
+                Coordonnées :
+            </legend>
+            <div class="form-group">
+                {{ form_label(form.address, 'Adresse postale :') }}
+                {{ form_widget(form.address) }}
+                {{ form_label(form.postalcode, 'Code postal :') }}
+                {{ form_widget(form.postalcode) }}
+                {{ form_label(form.city, 'Ville :') }}
+                {{ form_widget(form.city) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.phone, 'N° de téléphone :') }}
+                {{ form_widget(form.phone) }}
+                {{ form_label(form.mobile, 'N° de mobile :') }}
+                {{ form_widget(form.mobile) }}
+            </div>
+            <button type="submit">Enregistrer les modifications</button>
     {{ form_end(form) }}
 {% endblock %}
