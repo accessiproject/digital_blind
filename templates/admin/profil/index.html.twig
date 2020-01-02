@@ -9,9 +9,9 @@
             <li>Raison sociale de l'entreprise : {{ company.name }}.</li>
             <li>Logo de l'entreprise : <img src="{{ company.logo }}" al!t="Logo de l'entreprise"></li>
             <li>Résumé :</li>
-            {{ company.summary }}
+            {{ company.summary|raw|raw }}
             <li>Présentation de l'entreprise :</li>
-            {{ company.presentation }}
+            {{ company.presentation|raw|raw }}
         </ul>
     <h2>Coordonnées :</h2>
         <ul>

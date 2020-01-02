@@ -4,5 +4,5 @@
 
 {% block body %}
     <h1>{{ company.name }} – Présentation</h1>
-    <p>{{ company.presentation }}</p>
+    {{ company.presentation|raw|raw }}
 {% endblock %}
