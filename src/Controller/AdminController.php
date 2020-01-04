@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminController extends AbstractController
 {
     /**
-    * @Route("/profil", name="admin_profil_index") 
+    * @Route("/admin_profil_index", name="admin_profil_index") 
      */
     public function profil_index()
     {
@@ -24,7 +24,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/profil/edition", name="admin_profil_edit")
+     * @Route("/admin_profil_edition", name="admin_profil_edit")
      */
     public function profil_edit(Request $request, EntityManagerInterface $manager)
     {
