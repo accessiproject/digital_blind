@@ -61,6 +61,7 @@ class MailerController extends AbstractController
             $contact->setStatut("Initialisé");
             $manager->persist($contact);
             $manager->flush();
+            $this->addFlash('success', 'Le message a bien été envoyé !');
             return $this->redirectToRoute('home_default');
         }
         return $this->render('home/contact.html.twig', [

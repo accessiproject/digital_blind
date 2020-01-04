@@ -1,0 +1,62 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Notifications{% endblock %}
+
+{% block body %}
+    <button onclick="test()">test1</button>
+    <h1>Notifications reçues</h1>
+    <ol>
+        {% for notification in notifications %}
+            <li>
+                {{ notification.object }} (envoyé par {{ notification.email }} le {{ notification.createdat|date("d/m/Y H:i:s") }})
+                <input type="checkbox" name="statut{{ notification.id }}" id="statut{{ notification.id }}" onchange="test1()" value="{{ notification.statut }}">
+                <label for="statut{{ notification.id }}">{{ notification.statut }}</label>
+            </li>
+        {% endfor %}
+    </ol>
+<script>
+
+
+//fonction pour initialiser l'appel ajax
+/*
+function getXmlhttp() {
+    if (window.XMLHttpRequest)
+        return new XMLHttpRequest();
+    else if (window.ActiveXObject)
+        return new ActiveXObject("Msxml2.XMLHTTP");
+    else
+        throw new Error("Could not create HTTP request object.");
+}
+
+function test() {
+    var xmlhttp;
+    let statut = document.querySelectorAll("input");
+    //creation du paramètre
+    var para="cat="+loc_categorie.value + "&" + "nbh=" + diffEnHeures;
+	xmlhttp= getXmlhttp();
+	xmlhttp.open("GET","http://kevin/locacar/www/index.php?m=location&a=ajaxcalcultarif&" + para,true);
+	xmlhttp.onreadystatechange=mafonction;
+	xmlhttp.send();
+	
+	function mafonction() {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			document.getElementById("resultatprixhorsoption").innerHTML += xmlhttp.responseText;
+			tarif=xmlhttp.responseText;
+		}
+	}
+}
+*/
+
+function test1() {
+    let tab = document.querySelectorAll("input");
+    for (let i=0;i<tab.length;i++) {
+        if (tab[i].value=="Initialisé")
+            var para="Terminé";
+        else
+            var para = "Initialisé";
+    }
+    document.body.innerHTML += para;
+}
+
+    </script>
+{% endblock %}

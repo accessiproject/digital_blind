@@ -3,6 +3,11 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <h1>{{ company.name }}</h1>
     {{ company.summary|raw|raw }}
     <a href="{{ path('home_presentation') }}">Lire la présentation complète de l'entreprise</a>

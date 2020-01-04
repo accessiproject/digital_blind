@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Company;
+use App\Entity\Contact;
 use App\Entity\User;
 use App\Form\CompanyType;
 use App\Form\UserType;
@@ -70,6 +71,18 @@ class AdminController extends AbstractController
         }
         return $this->render('admin/profil/edit.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin_notification_index", name="admin_notification_index") 
+     */
+    public function notification_index()
+    {
+        $notifications = $this->getDoctrine()->getRepository(Contact::class)->findContactStatut("Initialisé","DESC");
+        return $this->render('admin/notification/index.html.twig', [
+            'controller_name' => 'AdminController',
+            'notifications' => $notifications,
         ]);
     }
 }
