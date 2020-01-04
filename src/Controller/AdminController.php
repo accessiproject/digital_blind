@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Company;
+use App\Entity\User;
 use App\Form\CompanyType;
+use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,7 +14,37 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdminController extends AbstractController
 {
     /**
-    * @Route("/admin_profil_index", name="admin_profil_index") 
+     * @Route("/admin_account_index", name="admin_account_index") 
+     */
+    public function account_index()
+    {
+        $user = $this->getDoctrine()->getRepository(User::class)->find($this->getUser());
+        return $this->render('admin/account/index.html.twig', [
+            'controller_name' => 'AdminController',
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/admin_account_edition", name="admin_account_edit")
+     */
+    public function account_edit(Request $request, EntityManagerInterface $manager)
+    {
+        $user = $manager->getRepository(User::class)->find($this->getUser());
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($user);
+            $manager->flush();
+            return $this->redirectToRoute('admin_account_index');
+        }
+        return $this->render('admin/account/edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin_profil_index", name="admin_profil_index") 
      */
     public function profil_index()
     {

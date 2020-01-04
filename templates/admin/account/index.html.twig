@@ -1,0 +1,15 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Espace administrateur{% endblock %}
+
+{% block body %}
+    <h1>Informations générales sur le compte</h1>
+    <ul>
+        <li>Nom d'utilisateur : {{ user.username }}</li>
+        <li>Adresse email : {{ user.email }}</li>
+    </ul>
+    <hr>
+    <p>
+        <a href="{{ path('admin_account_edit') }}">Modifier</a>
+    </p>
+{% endblock %}
