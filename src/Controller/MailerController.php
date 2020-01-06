@@ -5,7 +5,6 @@ namespace App\Controller;
 use Swift_Mailer;
 use App\Entity\Contact;
 use App\Form\ContactType;
-use App\Form\EditType;
 use Symfony\Component\Mime\Email;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
