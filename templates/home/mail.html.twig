@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>Alerte notification</title>
+	</head>
+	<body>
+		<h1>Alerte! Un message vous a été envoyé</h1>
+		<p>Envoyé le {{ contact.createdat|date("d/m/Y") }} à {{ contact.createdat|date("H:i:s") }}</p>
+		<h2>Informations sur le contact :</h2>
+		<ul>
+			<li>Prénom : {{ contact.firstname }}</li>
+			<li>Nom : {{ contact.lastname }}</li>
+			<li>Adresse email : <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
+		</ul>
+		<h2>Voici le message :</h2>
+		{{ contact.message }}
+	</body>
+</html>

@@ -26,14 +26,14 @@ class Mailer
             ->setTo($to)
             ->setSubject($subject)
             ->setBody($body)
-            ->setReplyTo($from)
+            ->setReplyTo($form)
             ->setContentType('text/html');
 
         $this->mailer->send($mail);
     }
 
-    public function createBodyMail($view)
+    public function createBodyMail($view, array $parameters)
     {
-        return $this->engine->render($view);
+        return $this->engine->render($view, $parameters);
     }
 }
