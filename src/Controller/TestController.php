@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
-use App\Service\Mailer1;
+use App\Service\Mailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,13 +18,14 @@ class TestController extends AbstractController
     /**
      * @Route("/test", name="test_index")
      */
-    public function contact(Request $request, Mailer1 $mailer1)
+    public function contact(Request $request, Mailer $mailer)
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $mailer1->send('kevin.bustamante1@orange.fr', 'kevin.bustamante@mail.novancia.fr', 'test', 'body');
+            $bodyMail = $mailer->createBodyMail('test/mail.html.twig');
+            $mailer->sendMessage('kevin.bustamante@mail.novancia.fr', 'kevin.bustamante@mail.novancia.fr', 'renouvellement du mot de passe', $bodyMail);
             return $this->redirectToRoute('home_default');
         }
         return $this->render('test/contact.html.twig', [
