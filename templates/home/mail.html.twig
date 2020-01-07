@@ -11,7 +11,19 @@
 		<ul>
 			<li>Prénom : {{ contact.firstname }}</li>
 			<li>Nom : {{ contact.lastname }}</li>
+			{% if contact.company %}
+				<li>Organisme : {{ contact.company }}</li>
+			{% endif %}
+			{% if contact.fonction %}
+				<li>Fonction : {{ contact.fonction }}</li>
+			{% endif %}
 			<li>Adresse email : <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
+			{% if contact.telephone %}
+				<li>N° Téléphone : <a href="tel:{{ contact.telephone }}">{{ contact.telephone }}</a></li>
+			{% endif %}
+			{% if contact.mobile %}
+				<li>N° mobile : <a href="tel:{{ contact.mobile }}">{{ contact.mobile }}</a></li>
+			{% endif %}
 		</ul>
 		<h2>Voici le message :</h2>
 		{{ contact.message }}
