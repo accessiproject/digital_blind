@@ -38,6 +38,17 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $passwordRequestedAt;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,5 +132,41 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /*
+     * Get passwordRequestedAt
+     */
+    public function getPasswordRequestedAt(): ?\DateTimeInterface
+    {
+        return $this->passwordRequestedAt;
+    }
+
+    /*
+     * Set passwordRequestedAt
+     */
+    public function setPasswordRequestedAt(\DateTimeInterface $passwordRequestedAt): self
+    {
+        $this->passwordRequestedAt = $passwordRequestedAt;
+        
+        return $this;
+    }
+
+    /*
+     * Get token
+     */
+    public function getToken(): string
+    {
+        return (string) $this->token;
+    }
+
+    /*
+     * Set token
+     */
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
+        
+        return $this;
     }
 }
